@@ -7,31 +7,31 @@ namespace SharpShapes
 {
     public class Rectangle : Shape
     {
-        private int width;
-        public int Width 
+        private decimal width;
+        public decimal Width 
         {
             get { return this.width; } 
         }
 
-        private int height;
-        public int Height 
+        private decimal height;
+        public decimal Height 
         {
             get { return this.height; } 
         }
 
         public override int SidesCount
         {
-            get { throw new NotImplementedException(); }
+            get { return 4; }
         }
 
         public override decimal Area()
         {
-            throw new NotImplementedException();
+            return Height * Width;
         }
 
         public override decimal Perimeter()
         {
-            throw new NotImplementedException();
+            return 2 * Height + 2 * Width;
         }
 
         public Rectangle(int width, int height)
@@ -46,7 +46,12 @@ namespace SharpShapes
 
         public override void Scale(int percent)
         {
-            throw new NotImplementedException();
+            if (percent <= 0)
+            {
+                throw new ArgumentException();
+            }
+            width = width * percent / 100;
+            height = height * percent / 100;
         }
     }
 }
