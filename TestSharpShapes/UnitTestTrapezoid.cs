@@ -37,7 +37,7 @@ namespace TestSharpShapes
             Trapezoid trapezoid = new Trapezoid(20, 0, 60, 120);
         }
 
-        TestMethod]
+        [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         public void TestTrapezoidSanityCheckHeightPositve()
         {
@@ -51,7 +51,7 @@ namespace TestSharpShapes
             Trapezoid trapezoid = new Trapezoid(20, 10, 60, 0);
         }
 
-        TestMethod]
+        [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         public void TestTrapezoidSanityCheckTopAnglePositve()
         {
@@ -65,7 +65,7 @@ namespace TestSharpShapes
             Trapezoid trapezoid = new Trapezoid(20, 10, 0, 120);
         }
 
-        TestMethod]
+        [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         public void TestTrapezoidSanityCheckBottomAnglePositve()
         {
@@ -86,7 +86,84 @@ namespace TestSharpShapes
             Trapezoid trapezoid = new Trapezoid(20, 10, 60, 110);
         }
 
+        [TestMethod]
+        public void TestTrapezoidPerimeter()
+        {
+            Trapezoid trapezoid = new Trapezoid(20, 10, 60, 120);
+            Assert.AreEqual(60, trapezoid.Perimeter());
+        }
 
+        [TestMethod]
+        public void TestTrapezoidScale200()
+        {
+            Trapezoid trapezoid = new Trapezoid(20, 10, 60, 120);
+            trapezoid.Scale(200);
+            Assert.AreEqual(40, trapezoid.Width);
+            Assert.AreEqual(20, trapezoid.Height);
+            Assert.AreEqual(60, trapezoid.BottomAngle);
+            Assert.AreEqual(120, trapezoid.TopAngle);
+        }
+
+        [TestMethod]
+        public void TestTrapezoidScale150()
+        {
+            Trapezoid trapezoid = new Trapezoid(20, 10, 60, 120);
+            trapezoid.Scale(150);
+            Assert.AreEqual(40, trapezoid.Width);
+            Assert.AreEqual(20, trapezoid.Height);
+            Assert.AreEqual(60, trapezoid.BottomAngle);
+            Assert.AreEqual(120, trapezoid.TopAngle);
+        }
+
+        [TestMethod]
+        public void TestTrapezoidScale37()
+        {
+            Trapezoid trapezoid = new Trapezoid(20, 10, 60, 120);
+            trapezoid.Scale(37);
+            Assert.AreEqual(40, trapezoid.Width);
+            Assert.AreEqual(20, trapezoid.Height);
+            Assert.AreEqual(60, trapezoid.BottomAngle);
+            Assert.AreEqual(120, trapezoid.TopAngle);
+        }
+
+        [TestMethod]
+        public void TestTrapezoidScaleUpAndDown()
+        {
+            Trapezoid trapezoid = new Trapezoid(20, 10, 60, 120);
+            trapezoid.Scale(50);
+            trapezoid.Scale(200);
+            Assert.AreEqual(20, trapezoid.Width);
+            Assert.AreEqual(10, trapezoid.Height);
+            Assert.AreEqual(60, trapezoid.BottomAngle);
+            Assert.AreEqual(120, trapezoid.TopAngle);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void TestTrapezoidScale0()
+        {
+            Trapezoid trapezoid = new Trapezoid(20, 10, 60, 120);
+            trapezoid.Scale(0);
+        }
+
+        [TestMethod]
+        public void TestTrapezoidScale100()
+        {
+            Trapezoid trapezoid = new Trapezoid(20, 10, 60, 120);
+            trapezoid.Scale(100);
+            Assert.AreEqual(20, trapezoid.Width);
+            Assert.AreEqual(10, trapezoid.Height);
+            Assert.AreEqual(60, trapezoid.BottomAngle);
+            Assert.AreEqual(120, trapezoid.TopAngle);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void TestTrapezoidNegativeScale()
+        {
+            Trapezoid trapezoid = new Trapezoid(20, 10, 60, 120);
+            trapezoid.Scale(-5);
+        }
 
     }
 }
