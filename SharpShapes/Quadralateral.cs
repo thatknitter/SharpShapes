@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SharpShapes
 {
-    public class Quadralateral : Shape
+    abstract public class Quadralateral : Shape
     {
         private decimal Topwidth;
         public decimal TopWidth 
@@ -46,9 +46,14 @@ namespace SharpShapes
             return LeftHeight + RightHeight + BottomWidth + TopWidth;
         }
 
+        public decimal AddAngles()
+        {
+            throw new NotImplementedException();
+        }
+
         public Quadralateral(int BottomWidth, int TopWidth, int LeftHeight, int RightHeight, int AngleA, int AngleB, int AngleC, int AngleD)
         {
-            if (BottomWidth <= 0 || TopWidth <= 0 || LeftHeight <= 0 || RightHeight <= 0)
+            if (BottomWidth <= 0 || TopWidth <= 0 || LeftHeight <= 0 || RightHeight <= 0 || AngleA <= 0 || AngleB <= 0 || AngleC <= 0 || AngleD <= 0 )
             {
                 throw new ArgumentException();
             }
@@ -69,5 +74,6 @@ namespace SharpShapes
             Leftheight = LeftHeight * percent / 100;
             Rightheight = RightHeight * percent / 100;
         }
+
     }
 }

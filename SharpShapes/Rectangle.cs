@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SharpShapes
 {
-    public class Rectangle : Shape
+    public class Rectangle : Quadralateral
     {
         private decimal width;
         public decimal Width 
@@ -34,7 +34,7 @@ namespace SharpShapes
             return 2 * Height + 2 * Width;
         }
 
-        public Rectangle(int width, int height)
+        public Rectangle(int width, int height, int angle) : base (width, width, height, height, angle, angle, angle, angle)
         {
             if (width <= 0 || height <= 0)
             {
