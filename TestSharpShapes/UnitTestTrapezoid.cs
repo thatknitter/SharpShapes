@@ -94,6 +94,13 @@ namespace TestSharpShapes
         }
 
         [TestMethod]
+        public void TestTrapezoidBiggerPerimeter()
+        {
+            Trapezoid trapezoid = new Trapezoid(40, 30, 60, 120);
+            Assert.AreEqual(140, trapezoid.Perimeter());
+        }
+
+        [TestMethod]
         public void TestTrapezoidScale200()
         {
             Trapezoid trapezoid = new Trapezoid(20, 10, 60, 120);
@@ -163,6 +170,35 @@ namespace TestSharpShapes
         {
             Trapezoid trapezoid = new Trapezoid(20, 10, 60, 120);
             trapezoid.Scale(-5);
+        }
+
+        [TestMethod]
+        public void TestTrapezoidSidesCount()
+        {
+            Trapezoid trapezoid = new Trapezoid(20, 10, 60, 120);
+            Assert.AreEqual(4, trapezoid.SidesCount());
+        }
+
+        [TestMethod]
+        public void TestTrapezoidArea()
+        {
+            Trapezoid trapezoid = new Trapezoid(20, 10, 60, 120);
+            Assert.AreEqual(100, trapezoid.Area());
+        }
+
+        [TestMethod]
+        public void TestTrapezoidBiggerArea()
+        {
+            Trapezoid trapezoid = new Trapezoid(40, 30, 60, 120);
+            Assert.AreEqual(100, trapezoid.Area());
+        }
+
+        [TestMethod]
+        public void TestTrapezoidDefaultColors()
+        {
+            Trapezoid trapezoid = new Trapezoid(20, 10, 60, 120);
+            Assert.AreEqual(System.Drawing.Color.Tomato, shape.BorderColor);
+            Assert.AreEqual(System.Drawing.Color.Bisque, shape.FillColor);
         }
 
     }
