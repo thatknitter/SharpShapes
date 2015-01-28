@@ -51,16 +51,16 @@ namespace SharpShapes
             throw new NotImplementedException();
         }
 
-        public Quadralateral(int BottomWidth, int TopWidth, int LeftHeight, int RightHeight, int AngleA, int AngleB, int AngleC, int AngleD)
+        public Quadralateral(int Bottomwidth, int Topwidth, int Leftheight, int Rightheight, int AngleA, int AngleB, int AngleC, int AngleD)
         {
-            if (BottomWidth <= 0 || TopWidth <= 0 || LeftHeight <= 0 || RightHeight <= 0 || AngleA <= 0 || AngleB <= 0 || AngleC <= 0 || AngleD <= 0 )
+            if (Bottomwidth <= 0 || Topwidth <= 0 || Leftheight <= 0 || Rightheight <= 0 || AngleA <= 0 || AngleB <= 0 || AngleC <= 0 || AngleD <= 0 )
             {
                 throw new ArgumentException();
             }
-            this.Bottomwidth = BottomWidth;
-            this.Topwidth = TopWidth;
-            this.Leftheight = LeftHeight;
-            this.Rightheight = RightHeight;
+            this.Bottomwidth = Bottomwidth;
+            this.Topwidth = Topwidth;
+            this.Leftheight = Leftheight;
+            this.Rightheight = Rightheight;
         }
 
         public override void Scale(int percent)
@@ -69,10 +69,10 @@ namespace SharpShapes
             {
                 throw new ArgumentException();
             }
-            Bottomwidth = BottomWidth * percent / 100;
-            Topwidth = TopWidth * percent / 100;
-            Leftheight = LeftHeight * percent / 100;
-            Rightheight = RightHeight * percent / 100;
+            Bottomwidth = Bottomwidth * percent / 100;
+            Topwidth = Topwidth * percent / 100;
+            Leftheight = Leftheight * percent / 100;
+            Rightheight = Rightheight * percent / 100;
         }
 
     }

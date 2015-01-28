@@ -13,10 +13,12 @@ namespace SharpShapes
             get { return this.edgelength; }
         }
 
-        public Square(int edgeLength, int angle) : base(edgeLength, edgeLength, edgeLength, edgeLength, angle, angle, angle, angle)
+        public Square(int edgelength, int angle) : base(edgelength, edgelength, edgelength, edgelength, angle, angle, angle, angle)
         {
-
+            this.edgelength = edgelength;
         }
+
+
 
     }
 }
