@@ -5,23 +5,28 @@ using System.Text;
 
 namespace SharpShapes
 {
-    public class Rectangle : Quadralateral
+    public class Rectangle : Quadrilateral
     {
         private decimal width;
-        public decimal Width 
+        public decimal Width
         {
-            get { return this.width; } 
+            get { return this.width; }
         }
 
         private decimal height;
-        public decimal Height 
+        public decimal Height
         {
-            get { return this.height; } 
+            get { return this.height; }
         }
 
-        public override int SidesCount
+        public Rectangle(int width, int height)
         {
-            get { return 4; }
+            if (width <= 0 || height <= 0)
+            {
+                throw new ArgumentException();
+            }
+            this.width = width;
+            this.height = height;
         }
 
         public override decimal Area()
@@ -34,24 +39,14 @@ namespace SharpShapes
             return 2 * Height + 2 * Width;
         }
 
-        public Rectangle(int width, int height, int angle) : base (width, width, height, height, angle, angle, angle, angle)
-        {
-            if (width <= 0 || height <= 0)
-            {
-                throw new ArgumentException();
-            }
-            this.width = width;
-            this.height = height;
-        }
-
         public override void Scale(int percent)
         {
             if (percent <= 0)
             {
                 throw new ArgumentException();
             }
-            width = width * percent / 100;
-            height = height * percent / 100;
+            this.width = width * percent / 100;
+            this.height = height * percent / 100;
         }
     }
 }

@@ -5,135 +5,124 @@ using SharpShapes;
 namespace TestSharpShapes
 {
     [TestClass]
-    public class UnitTestSquare
+    public class UnitTestSquares
     {
         [TestMethod]
         public void TestSquareConstructor()
         {
-            Square square = new Square(20, 90);
-            Assert.AreEqual(20, square.edgeLength);
-            
+            Square square = new Square(40);
+            Assert.AreEqual(40, square.Height);
+            Assert.AreEqual(40, square.Width);
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
-        public void TestSquareedgeLengthSanityCheck()
+        public void TestSquareConstructorChecksSidePositivity()
         {
-            Square square = new Square(0, 90);
+            new Square(-1);
         }
-
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
-        public void TestSquareConstructoredgeLengthPositveSanityCheck()
+        public void TestSquareConstructorChecksSideIsntZero()
         {
-            Square square = new Square(-1, 90);
+            new Square(0);
         }
 
         [TestMethod]
-        public void TestSquareScale200Percent()
+        public void TestScaleSquare200Percent()
         {
-            Square square = new Square(20, 90);
+            Square square = new Square(10);
             square.Scale(200);
-            Assert.AreEqual(40, square.edgeLength);
-            
+            Assert.AreEqual(20, square.Height);
+            Assert.AreEqual(20, square.Width);
         }
 
         [TestMethod]
-        public void TestSquareScale150Percent()
+        public void TestScaleSquare150Percent()
         {
-            Square square = new Square(20, 90);
+            Square square = new Square(10);
             square.Scale(150);
-            Assert.AreEqual(30, square.edgeLength);
-            
+            Assert.AreEqual(15, square.Height);
+            Assert.AreEqual(15, square.Width);
         }
 
         [TestMethod]
-        public void TestSquareScale37Percent()
+        public void TestScaleSquare100Percent()
         {
-            Square square = new Square(20, 90);
+            Square square = new Square(10);
+            square.Scale(100);
+            Assert.AreEqual(10, square.Height);
+            Assert.AreEqual(10, square.Width);
+        }
+
+        [TestMethod]
+        public void TestScaleSquare37Percent()
+        {
+            Square square = new Square(15);
             square.Scale(37);
-            Assert.AreEqual((decimal) 7.4, square.edgeLength);
-
-        }
-
-        [TestMethod]
-        public void TestSquareScaleUpAndDown()
-        {
-            Square square = new Square(20, 90);
-            square.Scale(50);
-            square.Scale(200);
-            Assert.AreEqual(20, square.edgeLength);
-            
+            Assert.AreEqual((decimal)5.55, square.Height);
+            Assert.AreEqual((decimal)5.55, square.Width);
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
-        public void TestSquareScale0Percent()
+        public void TestScaleSquareTo0Percent()
         {
-            Square square = new Square(20, 90);
+            Square square = new Square(15);
             square.Scale(0);
         }
 
         [TestMethod]
-        public void TestSquareScale100Percent()
-        {
-            Square square = new Square(20, 90);
-            square.Scale(100);
-            Assert.AreEqual(20, square.edgeLength);
-            
-        }
-
-        [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
-        public void TestSquareScaleNegativePercent()
+        public void TestScaleSquareToNegativePercent()
         {
-            Square square = new Square(20, 90);
-            square.Scale(-5);
+            Square square = new Square(15);
+            square.Scale(-10);
         }
 
         [TestMethod]
-        public void TestSquareSidesCount()
+        public void TestSquareSides()
         {
-            Square square = new Square(20, 90);
+            Square square = new Square(15);
             Assert.AreEqual(4, square.SidesCount);
         }
 
         [TestMethod]
         public void TestSquareArea()
         {
-            Square square = new Square(20, 90);
-            Assert.AreEqual(400, square.Area());
+            Square square = new Square(15);
+            Assert.AreEqual(225, square.Area());
         }
+
 
         [TestMethod]
         public void TestBiggerSquareArea()
         {
-            Square square = new Square(40, 90);
-            Assert.AreEqual(1600, square.Area());
+            Square square = new Square(10);
+            Assert.AreEqual(100, square.Area());
         }
 
         [TestMethod]
         public void TestSquarePerimeter()
         {
-            Square square = new Square(20, 90);
-            Assert.AreEqual(80, square.Perimeter());
+            Square square = new Square(15);
+            Assert.AreEqual(60, square.Perimeter());
         }
 
         [TestMethod]
         public void TestBiggerSquarePerimeter()
         {
-            Square square = new Square(40, 90);
-            Assert.AreEqual(160, square.Perimeter());
+            Square square = new Square(10);
+            Assert.AreEqual(40, square.Perimeter());
         }
 
         [TestMethod]
         public void TestDefaultColors()
         {
-            Square shape = new Square(20, 90);
-            Assert.AreEqual(System.Drawing.Color.Tomato, shape.BorderColor);
+            Square shape = new Square(15);
             Assert.AreEqual(System.Drawing.Color.Bisque, shape.FillColor);
-
+            Assert.AreEqual(System.Drawing.Color.Tomato, shape.BorderColor);
         }
     }
 }

@@ -5,30 +5,55 @@ using System.Text;
 
 namespace SharpShapes
 {
-    public class Trapezoid : Quadralateral
+    public class Trapezoid : Quadrilateral
     {
-        private decimal height;
-        public decimal Height
+        public decimal LongBase { get; private set; }
+        public decimal ShortBase { get; private set; }
+        public decimal Height { get; private set; }
+        public decimal ObtuseAngle { get; private set; }
+        public decimal AcuteAngle { get; private set; }
+
+        public Trapezoid(int longBase, int shortBase, int height)
         {
-            get { return this.height; }
+            if (height <= 0 || shortBase <= 0 || longBase <= 0 || shortBase >= longBase)
+            {
+                throw new ArgumentException();
+            }
+            this.LongBase = longBase;
+            this.ShortBase = shortBase;
+            this.Height = height;
+
+            this.AcuteAngle = Decimal.Round((decimal)(Math.Atan((double)(height / WingLength())) * (180.0 / Math.PI)), 2);
+
+            this.ObtuseAngle = 180 - AcuteAngle;
         }
 
-        private int Bottomangle;
-        public int BottomAngle
+        private decimal WingLength()
         {
-            get { return this.Bottomangle; }
+            return (LongBase - ShortBase) / 2;
         }
 
-        private int Topangle;
-        public int TopAngle
+        public override void Scale(int percent)
         {
-            get { return this.Topangle; }
+            if (percent <= 0)
+            {
+                throw new ArgumentException();
+            }
+            this.LongBase = LongBase * percent / 100;
+            this.ShortBase = ShortBase * percent / 100;
+            this.Height = Height * percent / 100;
         }
 
-        public Trapezoid(int BottomWidth, int TopWidth, int Height, int BottomAngle, int TopAngle)
-            : base(BottomWidth, TopWidth, Height, Height, BottomAngle, BottomAngle, TopAngle, TopAngle)
+        public override decimal Area()
         {
+            return (LongBase + ShortBase) / 2 * Height;
+        }
 
+        public override decimal Perimeter()
+        {
+            double squares = (double)(WingLength() * WingLength() + Height * Height);
+            decimal legLength = Decimal.Round((decimal)Math.Sqrt(squares), 2);
+            return LongBase + ShortBase + 2 * legLength;
         }
     }
 }

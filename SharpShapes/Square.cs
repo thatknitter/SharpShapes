@@ -5,21 +5,11 @@ using System.Text;
 
 namespace SharpShapes
 {
-    public class Square : Quadralateral
+    public class Square : Rectangle
     {
-        private decimal edgelength;
-        public decimal edgeLength
+        public Square(int edgeLength)
+            : base(edgeLength, edgeLength)
         {
-            get { return this.edgelength; }
         }
-
-        public Square(int edgelength, int angle) : base(edgelength, edgelength, edgelength, edgelength, angle, angle, angle, angle)
-        {
-            this.edgelength = edgelength;
-        }
-
-
-
     }
 }
-
