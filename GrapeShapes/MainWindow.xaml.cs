@@ -62,21 +62,9 @@ namespace GrapeShapes
             
             string className = (String)ShapeType.SelectedValue;
             int argCount = ArgumentCountFor(className);
-            if (argCount == 1)
-            {
-                Argument2.IsEnabled = false;
-                Argument3.IsEnabled = false;
-            }
-            else if (argCount == 2)
-            {
-                Argument2.IsEnabled = true;
-                Argument3.IsEnabled = false;
-            }
-            else
-            {
-                Argument2.IsEnabled = true;
-                Argument3.IsEnabled = true;
-            }
+            Argument1.IsEnabled = true;
+            Argument2.IsEnabled = (argCount > 1);
+            Argument3.IsEnabled = (argCount > 2);
         }
     }
 }
