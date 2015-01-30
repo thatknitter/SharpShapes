@@ -25,6 +25,7 @@ namespace GrapeShapes
         {
             InitializeComponent();
             PopulateClassList();
+            PopulateTestShapes();
         }
 
         public static int ArgumentCountFor(string className)
@@ -58,22 +59,24 @@ namespace GrapeShapes
         private void ShapeType_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             // TODO: Enable/Disable Inputs based on the number of required arguments.
-            var square = new Square();
-            var rectangle = new Rectangle();
-            if (ShapeType = square)
+            
+            string className = (String)ShapeType.SelectedValue;
+            int argCount = ArgumentCountFor(className);
+            if (argCount == 1)
             {
-                //Do not display text boxes 2 or 3
+                Argument2.IsEnabled = false;
+                Argument3.IsEnabled = false;
             }
-            if (ShapeType = rectangle)
+            else if (argCount == 2)
             {
-                // Do not display text box 3
+                Argument2.IsEnabled = true;
+                Argument3.IsEnabled = false;
             }
             else
             {
-                //display all text boxes
+                Argument2.IsEnabled = true;
+                Argument3.IsEnabled = true;
             }
-            string className = (String)ShapeType.SelectedValue;
-            Argument1.Text = ArgumentCountFor(className).ToString();
         }
     }
 }
