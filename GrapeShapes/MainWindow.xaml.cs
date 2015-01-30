@@ -64,6 +64,9 @@ namespace GrapeShapes
             Argument1.IsEnabled = true;
             Argument2.IsEnabled = (argCount > 1);
             Argument3.IsEnabled = (argCount > 2);
+            Argument1.Clear();
+            Argument2.Clear();
+            Argument3.Clear();
         }
     }
 }
