@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Drawing;
+﻿using System.Drawing;
+using System.Windows.Controls;
 
 namespace SharpShapes
 {
@@ -53,6 +49,14 @@ namespace SharpShapes
         /// </summary>
         /// <param name="percent">The percentage by which to scale the shape</param>
         abstract public void Scale(int percent);
+
+        /// <summary>
+        /// Creates a polygon representing the shape and adds it to ShapeCanvas
+        /// </summary>
+        /// <param name="ShapeCanvas">The canvas on which to draw the shape</param>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        abstract public void DrawOnto(Canvas ShapeCanvas, int x, int y);
         
     }
 }
