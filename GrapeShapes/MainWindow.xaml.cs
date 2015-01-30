@@ -58,6 +58,20 @@ namespace GrapeShapes
         private void ShapeType_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             // TODO: Enable/Disable Inputs based on the number of required arguments.
+            var square = new Square();
+            var rectangle = new Rectangle();
+            if (ShapeType = square)
+            {
+                //Do not display text boxes 2 or 3
+            }
+            if (ShapeType = rectangle)
+            {
+                // Do not display text box 3
+            }
+            else
+            {
+                //display all text boxes
+            }
             string className = (String)ShapeType.SelectedValue;
             Argument1.Text = ArgumentCountFor(className).ToString();
         }
