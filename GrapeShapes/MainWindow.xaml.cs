@@ -27,18 +27,39 @@ namespace GrapeShapes
             PopulateClassList();
         }
 
+        public static int ArgumentCountFor(string className)
+        {
+            Type classType = Assembly.GetAssembly(typeof(Shape)).GetTypes().Where(shapeType => shapeType.Name == className).First();
+            ConstructorInfo classConstructor = classType.GetConstructors().First();
+            return classConstructor.GetParameters().Length;
+        }
+
+        public static Shape InstantiateWithArguments(string className, object[] args)
+        {
+            Type classType = Type.GetType(className);
+            ConstructorInfo classConstructor = classType.GetConstructors().First();
+            return (Shape)classConstructor.Invoke(args);
+        }
+
         private void PopulateClassList()
         {
             var classList = new List<string>();
-           var shapeType = typeof(Shape);
-           foreach (Type type in Assembly.GetAssembly(shapeType).GetTypes())
-           {
-               if (type.IsSubclassOf(shapeType) && !type.IsAbstract)
-               {
-                  classList.Add(type.Name);
-               }
-           }
-           ShapeType.ItemsSource = classList;
+            var shapeType = typeof(Shape);
+            foreach (Type type in Assembly.GetAssembly(shapeType).GetTypes())
+            {
+                if (type.IsSubclassOf(shapeType) && !type.IsAbstract)
+                {
+                    classList.Add(type.Name);
+                }
+            }
+            ShapeType.ItemsSource = classList;
+        }
+
+        private void ShapeType_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            // TODO: Enable/Disable Inputs based on the number of required arguments.
+            string className = (String)ShapeType.SelectedValue;
+            Argument1.Text = ArgumentCountFor(className).ToString();
         }
     }
 }
