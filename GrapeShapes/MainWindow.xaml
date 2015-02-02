@@ -11,7 +11,9 @@
                 <TextBox HorizontalAlignment="Left" TextWrapping="Wrap" Margin="10" Width="100" Text="" VerticalAlignment="Top" x:Name="Argument3"/>
                 <Button Content="Create" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,10,0" Height="18" Width="62" Click="Button_Click"/>
             </StackPanel>
-            <Canvas HorizontalAlignment="Left" Height="505" VerticalAlignment="Top" Width="570" Background="#FFF6F6F6" Name="ShapeCanvas"/>
+            <Canvas HorizontalAlignment="Left" Height="505" VerticalAlignment="Top" Width="570" Background="#FFF6F6F6" Name="ShapeCanvas">
+                <Canvas Height="485" Canvas.Left="10" Canvas.Top="10" Width="550"/>
+            </Canvas>
         </StackPanel>
     </Grid>
 </Window>
