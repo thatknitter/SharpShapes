@@ -55,18 +55,18 @@ namespace GrapeShapes
             ShapeType.ItemsSource = classList;
         }
 
-        //private void PopulateTestShapes()
-        //{
-        //    var square = new Square(30);
-        //    square.FillColor = System.Drawing.Color.AliceBlue;
-        //    square.BorderColor = System.Drawing.Color.BurlyWood;
+        private void populatetestshapes()
+        {
+            var square = new Square(30);
+            square.FillColor = Colors.AliceBlue;
+            square.BorderColor = Colors.BurlyWood;
 
-        //    var square2 = new Square(200);
-        //    square2.BorderColor = System.Drawing.Color.Navy;
-        //    square2.FillColor = System.Drawing.Color.Fuchsia;
-        //    DrawSquare(1, 50, square);
-        //    DrawSquare(50, 5, square2);
-        //}
+            var square2 = new Square(200);
+            square2.BorderColor = Colors.Navy;
+            square2.FillColor = Colors.Fuchsia;
+            square.DrawOnto(ShapeCanvas, 1, 50);
+            square.DrawOnto(ShapeCanvas, 50, 5);
+        }
 
 
        

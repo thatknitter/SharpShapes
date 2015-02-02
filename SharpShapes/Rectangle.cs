@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Media;
+using System.Windows.Shapes;
 
 namespace SharpShapes
 {
@@ -33,18 +35,13 @@ namespace SharpShapes
             return Height * Width;
         }
 
-        private void DrawRectangle()
+        public override void DrawOnto(Canvas ShapeCanvas, int x, int y)
         {
-            System.Windows.Shapes.Polygon myPolygon = new System.Windows.Shapes.Polygon();
-            myPolygon.Stroke = System.Windows.Media.Brushes.Tomato;
-            myPolygon.Fill = System.Windows.Media.Brushes.Bisque;
-            myPolygon.StrokeThickness = 2;
-            myPolygon.HorizontalAlignment = HorizontalAlignment.Left;
-            myPolygon.VerticalAlignment = VerticalAlignment.Center;
-            Point point1 = new Point(10, 50);
-            Point point2 = new Point(10, 80);
-            Point point3 = new Point(50, 80);
-            Point point4 = new Point(50, 50);
+            Polygon myPolygon = GeneratePolygon();
+            Point point1 = new Point(x, y);
+            Point point2 = new Point(x, y + (double)Height);
+            Point point3 = new Point(x + (double)Width, y + (double)Height);
+            Point point4 = new Point(x + (double)Width, y);
 
             PointCollection myPointCollection = new PointCollection();
             myPointCollection.Add(point1);

@@ -1,5 +1,6 @@
-﻿using System.Drawing;
-using System.Windows.Controls;
+﻿using System.Windows.Controls;
+using System.Windows.Media;
+using System.Windows.Shapes;
 
 namespace SharpShapes
 {
@@ -23,8 +24,8 @@ namespace SharpShapes
 
         public Shape()
         {
-            BorderColor = Color.Tomato;
-            FillColor = Color.Bisque;
+            BorderColor = Colors.Tomato;
+            FillColor = Colors.Bisque;
         }
 
         
@@ -57,6 +58,14 @@ namespace SharpShapes
         /// <param name="x"></param>
         /// <param name="y"></param>
         abstract public void DrawOnto(Canvas ShapeCanvas, int x, int y);
-        
+
+        protected Polygon GeneratePolygon()
+        {
+            Polygon myPolygon = new Polygon();
+            myPolygon.Stroke = new SolidColorBrush(BorderColor);
+            myPolygon.Fill = new SolidColorBrush(FillColor);
+            myPolygon.StrokeThickness = 2;
+            return myPolygon;
+        }
     }
 }
